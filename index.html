@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        padding: 20px;
+      }
+
+      .card {
+        max-width: 800px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        margin-bottom: 16px;
+      }
+
+      .card-body {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      figure {
+        flex: 1;
+        min-width: 150px;
+        text-align: center;
+      }
+
+      img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+
+      .card-info {
+        flex: 2;
+        min-width: 250px;
+      }
+
+      .socials {
+        list-style: none;
+        margin: 10px 0;
+      }
+
+      .socials li {
+        margin-bottom: 5px;
+      }
+
+      a {
+        color: #0077cc;
+        text-decoration: none;
+      }
+
+      a:focus,
+      a:hover {
+        text-decoration: underline;
+        outline: 2px solid #0077cc;
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .card-body {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .card-info {
+          text-align: center;
+        }
+      }
+    </style>
+    <title>Profile Card</title>
+  </head>
+
+  <body>
+    <article data-testid="test-profile-card" class="card">
+      <header class="card-header">
+        <h2 data-testid="test-user-name">Mc Johnson</h2>
+      </header>
+
+      <div class="card-body">
+        <figure>
+          <img
+            src="./mcjohnson.jpg"
+            alt="Portrait of Mc Johnson smiling"
+            data-testid="test-user-avatar"
+          />
+          <figcaption>Frontend Developer</figcaption>
+        </figure>
+
+        <div class="card-info">
+          <p data-testid="test-user-bio">
+            Passionate frontend developer focused on building accessible, clean,
+            and scalable web interfaces.
+          </p>
+
+          <p>
+            Current Time (ms):
+            <span
+              data-testid="test-user-time"
+              id="time"
+              aria-live="polite"
+            ></span>
+          </p>
+
+          <nav aria-label="Social links">
+            <ul data-testid="test-user-social-links" class="socials">
+              <li>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="test-user-social-twitter"
+                  >Twitter</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="test-user-social-github"
+                  >GitHub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="test-user-social-linkedin"
+                  >LinkedIn</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <section>
+            <h3>Hobbies</h3>
+            <ul data-testid="test-user-hobbies">
+              <li>Coding</li>
+              <li>Gaming</li>
+              <li>Watching tech videos</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Dislikes</h3>
+            <ul data-testid="test-user-dislikes">
+              <li>Poor UI</li>
+              <li>Slow websites</li>
+              <li>Unclear documentation</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </article>
+  </body>
+  <script>
+    const timeElement = document.getElementById("time");
+
+    function updateTime() {
+      timeElement.textContent = Date.now();
+    }
+
+    // Initial render
+    updateTime();
+
+    // Update every second
+    setInterval(updateTime, 1000);
+  </script>
+</html>
